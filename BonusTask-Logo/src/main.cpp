@@ -1,0 +1,65 @@
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+// ---- OLED setup ----
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_ADDR 0x3C
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+
+// ---- Bigger Smiley Emoji Bitmap (24x24) ----
+static const unsigned char PROGMEM smiley_bmp[] = {
+  0x00,0x3E,0x00,
+  0x01,0xFF,0x80,
+  0x03,0xFF,0xC0,
+  0x07,0xC3,0xE0,
+  0x0F,0x00,0xF0,
+  0x1E,0x00,0x78,
+  0x1C,0x00,0x38,
+  0x38,0x00,0x1C,
+  0x38,0x42,0x1C,
+  0x70,0x42,0x0E,
+  0x70,0x00,0x0E,
+  0x70,0x00,0x0E,
+  0x70,0x00,0x0E,
+  0x70,0x24,0x0E,
+  0x38,0x24,0x1C,
+  0x38,0x00,0x1C,
+  0x1C,0x00,0x38,
+  0x1E,0x00,0x78,
+  0x0F,0x00,0xF0,
+  0x07,0xC3,0xE0,
+  0x03,0xFF,0xC0,
+  0x01,0xFF,0x80,
+  0x00,0x3E,0x00,
+  0x00,0x00,0x00
+};
+
+void setup() {
+  Wire.begin(21, 22); // ESP32 default I2C pins (SDA=21, SCL=22)
+
+  if (!display.begin(SSD1306_SWITCHCAPVCC, OLED_ADDR)) {
+    for (;;);
+  }
+
+  display.clearDisplay();
+}
+
+void loop() {
+  display.clearDisplay();
+
+  // ---- Display Name with more top spacing ----
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(20, 10);  // moved down slightly from y=5 → y=10
+  display.println("Rameen Fatima");
+
+  // ---- Display Large Emoji Below Name ----
+  display.drawBitmap(52, 30, smiley_bmp, 24, 24, SSD1306_WHITE);
+  // moved down slightly (y=20 → y=30) to balance spacing
+
+  display.display();
+  delay(3000);
+}

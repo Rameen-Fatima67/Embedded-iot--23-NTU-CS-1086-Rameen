@@ -11,7 +11,7 @@ void setup() {
 }
 void loop() {
   for (int d=0; d<=255; d++) { 
-ledcWrite(PWM_CH, d); delay(5); }
+ledcWrite(PWM_CH, d); delay(2); }
   for (int d=255; d>=0; d--) { 
-ledcWrite(PWM_CH, d); delay(5); }
+ledcWrite(PWM_CH, d); delay(2); }
 }

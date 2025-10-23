@@ -11,7 +11,7 @@
 // --- Pin Configuration ---
 #define DHTPIN 14        // DHT22 data pin
 #define DHTTYPE DHT11    // Sensor type: DHT22 (or DHT11 if needed)
-#define LDR_PIN 34       // LDR connected to analog pin 34
+#define LDR_PIN 36       // LDR connected to analog pin 36
 #define SDA_PIN 21       // I2C SDA pin
 #define SCL_PIN 22       // I2C SCL pin
 

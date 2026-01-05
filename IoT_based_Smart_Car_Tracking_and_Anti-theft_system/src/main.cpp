@@ -28,8 +28,8 @@
 #include <math.h>
 
 // ---------------- WiFi ----------------
-char ssid[] = "Ahmad";
-char pass[] = "4321@#0@#0";
+char ssid[] = "NTU-FSD";
+char pass[] = "";
 
 // ---------------- ThingSpeak ----------------
 String tsWriteAPIKey = "3BHWKOMC9AKKYXGA"; // Your ThingSpeak Write API Key
@@ -54,8 +54,8 @@ HardwareSerial GPSSerial(2); // RX=16, TX=17
 TinyGPSPlus gps;
 
 // ---------------- Geo-Fence ----------------
-double centerLat = 31.462629;
-double centerLng = 73.149367;
+double centerLat = 31.462637;
+double centerLng = 73.149069;
 double radiusMeters = 100;
 
 // ---------------- OLED ----------------
